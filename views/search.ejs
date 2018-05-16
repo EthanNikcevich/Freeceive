@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		body {
+    	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    	font-weight: 350;
+		}
+	</style>
+	<% include ../partials/head %>
+</head>
+<body>
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+  <main>
+
+    <div class="jumbotron" >
+			<a href="https://imgur.com/0EFgodT"><img src="https://i.imgur.com/Y7CXQEm.png" title="source: imgur.com" style="height:60px;"/></a>
+		</div>
+
+    <form action="/searchDog" method="POST" style="max-width:1350px; margin:auto">
+			<p style="font-size:150%">Search our Listings</p>
+      <input type="text" placeholder="Search" name="name" style="width:300px"><br>
+      <input type="submit" value="Search" style="width:300px">
+    </form>
+
+    <ul class="contacts" style="list-style-type: none;">
+      	<% for(var i=0; i<foundDogs.length; i++){ %>
+      			<li class="post">
+							<span>
+								<img src=<%= foundDogs[i].url %> alt="dog picture" style="height:200px;">
+							</span>
+							<li class="text" style="font-size:120%">
+          			<span><%= foundDogs[i].name %>-</span>
+        				<span><%= foundDogs[i].caption %></span>
+							</li>
+						</li style="list-style-type: none;">
+				<% } %>
+    </ul>
+
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+
+</body>
+</html>
